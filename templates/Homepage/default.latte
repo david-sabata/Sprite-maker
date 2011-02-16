@@ -1,0 +1,35 @@
+{* This is temporary page, you can delete it *}
+
+{block content}
+<div id="wrapper">
+	<div id="logo"></div>
+
+	<h1>Spritetvořič!</h1>
+
+	<h2>You have successfully created your Nette Framework project.</h2>
+
+	<hr>
+      
+      {if !isset($done) || !$done}
+
+         {control pickFolder begin}
+         {control pickFolder errors}
+
+         {foreach $control['pickFolder']->getComponents() as $c}
+            {if $c instanceof Nette\Forms\SubmitButton}
+               <br /><br />{$c->control}
+            {else}
+               <h2>{$c->label}</h2>
+               {$c->control}
+            {/if}
+         {/foreach}
+
+         {control pickFolder end}
+               
+       {else}
+          <style type="text/css">{!$css}</style>
+          <textarea style="width:100%; height:500px">{!$css}</textarea>
+          <br />
+          <div style="width:100%; min-height:500px; background:red">{!$test}<br style="clear:both" /></div>               
+       {/if}
+</div>
